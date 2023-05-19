@@ -14,7 +14,7 @@ class BeritaController extends Controller
      */
     public function index()
     {
-        //
+        return view('berita.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class BeritaController extends Controller
      */
     public function create()
     {
-        //
+        return view('berita.create');
     }
 
     /**
@@ -46,7 +46,7 @@ class BeritaController extends Controller
      */
     public function show(Berita $berita)
     {
-        //
+        return view('berita.show');
     }
 
     /**
@@ -57,7 +57,7 @@ class BeritaController extends Controller
      */
     public function edit(Berita $berita)
     {
-        //
+        return view('berita.edit');
     }
 
     /**
