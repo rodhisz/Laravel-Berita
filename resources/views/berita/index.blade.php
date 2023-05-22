@@ -18,41 +18,25 @@
 
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
                     {{-- 1 --}}
+                    @foreach ( $berita as $b )
                     <div class="col">
                         <div class="card shadow-sm">
-                            <img src="/img/kel2.jpeg" class="card-img-top object-fit-cover" width="100%" height="225"
+                            <img src="{{ url('storage/' . $b->gambar) }}" class="card-img-top object-fit-cover" width="100%" height="225"
                                 alt="photo">
                             <div class="card-body">
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                    additional content. This content is a little bit longer.</p>
+                                <h5 class="card-text mb-3">{!! $b->judul !!}</h5>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <a href="{{ '/show' }}" class="btn btn-sm btn-outline-secondary">View</a>
-                                        <a href="{{ '/edit' }}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                        <a href="{{ "/show/$b->id" }}" class="btn btn-sm btn-outline-secondary">View</a>
+                                        <a href="{{ "/edit/$b->id" }}" class="btn btn-sm btn-outline-secondary">Edit</a>
                                     </div>
-                                    <small class="text-body-secondary">9 mins</small>
+                                    <small class="text-body-secondary">{{ date('d M', strtotime($b->tanggal)) }}</small>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    {{-- 2 --}}
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <img class="card-img-top object-fit-cover" src="/img/3.png" width="100%" height="225"
-                                alt="photo-berita">
-                            <div class="card-body">
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                    additional content. This content is a little bit longer.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <a href="{{ '/show' }}" class="btn btn-sm btn-outline-secondary">View</a>
-                                        <a href="{{ '/edit' }}" class="btn btn-sm btn-outline-secondary">Edit</a>
-                                    </div>
-                                    <small class="text-body-secondary">9 mins</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+                    @endforeach
                 </div>
             </div>
         </div>

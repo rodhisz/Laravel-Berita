@@ -17,7 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [BeritaController::class, 'index'])->name('index');
 
 Route::get('/create', [BeritaController::class, 'create'])->name('create');
+Route::post('/create/berita', [BeritaController::class, 'store'])->name('store');
 
-Route::get('/show', [BeritaController::class, 'show'])->name('show');
+Route::get('/show/{id}', [BeritaController::class, 'show'])->name('show');
 
-Route::get('/edit', [BeritaController::class, 'edit'])->name('edit');
+Route::get('/edit/{id}', [BeritaController::class, 'edit'])->name('edit');
+Route::put('/edit/{id}/update', [BeritaController::class, 'update'])->name('update');
+
+Route::delete('/delete/{id}', [BeritaController::class, 'destroy'])->name('destroy');

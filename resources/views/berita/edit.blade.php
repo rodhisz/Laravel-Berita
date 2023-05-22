@@ -11,24 +11,34 @@
         </div>
     </nav>
     <div class="container py-5">
-
-        <div class="mb-3">
-            <label for="judul" class="form-label">Judul</label>
-            <input type="text" name="judul" class="form-control" id="judul">
-        </div>
-        <div class="mb-3">
-            <label for="penulis" class="form-label">Penulis</label>
-            <input type="text" name="penulis" class="form-control" id="penulis">
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Konten</label>
-            <textarea type="text" name="konten" class="form-control" id="editor"></textarea>
-        </div>
-        <img class="mb-3 img-thumbnail" style="width: 30%;" src="/img/3.png" alt="">
-        <div class="mb-3">
-            <label for="gambar" class="form-label">Gambar</label>
-            <input class="form-control" name="gambar" type="file" id="gambar">
-        </div>
+        <form action="{{ url("edit/$berita->id/update") }}" enctype="multipart/form-data" method="POST">
+            @csrf
+            @method('PUT')
+            <div class="mb-3">
+                <label for="judul" class="form-label">Judul</label>
+                <input type="text" value="{{ $berita->judul }}" name="judul" class="form-control" id="judul">
+            </div>
+            <div class="mb-3">
+                <label for="penulis" class="form-label">Penulis</label>
+                <input type="text" value="{{ $berita->penulis }}" name="penulis" class="form-control" id="penulis">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Konten</label>
+                <textarea type="text" name="konten" class="form-control" id="editor">{!! $berita->konten !!}</textarea>
+            </div>
+            <img class="mb-3 img-thumbnail" style="width: 30%;" src="{{ url('storage/' . $berita->gambar) }}"
+                alt="">
+            <div class="mb-3">
+                <label for="gambar" class="form-label">Gambar</label>
+                <input class="form-control" name="gambar" type="file" id="gambar">
+            </div>
+            <button class="btn btn-warning px-4 gap-3" type="submit">Submit</button>
+        </form>
+        <form action="{{ url("/delete/$berita->id") }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button class="btn btn-danger px-4 gap-3" type="submit">Hapus</button>
+        </form>
     </div>
 
 
